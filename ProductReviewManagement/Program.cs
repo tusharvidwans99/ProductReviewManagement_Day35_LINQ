@@ -53,7 +53,10 @@
 
 
             //UC4
-            productManagement.countOfReviews(productReviewList);
+            //productManagement.countOfReviews(productReviewList);
+
+            //UC5
+            productManagement.retrieveProductIDandreview(productReviewList);
         }
     }
 }
