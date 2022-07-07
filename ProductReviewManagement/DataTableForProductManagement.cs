@@ -56,5 +56,14 @@ namespace ProductReviewManagement
         }
 
 
+        /// <summary>
+        /// UC11 - calling for getting review retrieval.
+        /// </summary>
+        public void CallForReviewRetrieval()
+        {
+            productManagement.ReviewMessageRetrieval(table);
+        }
+
+
     }
 }
