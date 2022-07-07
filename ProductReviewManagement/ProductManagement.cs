@@ -103,7 +103,7 @@ namespace ProductReviewManagement
 
 
         /// <summary>
-        /// UC8 - Retrievings the records.
+        /// UC9 - Retrievings the records.
         /// </summary>
         /// <param name="table">The table.</param>
         public void RetrievingRecords(DataTable table)
@@ -118,6 +118,21 @@ namespace ProductReviewManagement
             foreach (var list in recordedData)
             {
                 Console.WriteLine("ProductId:-" + list.Field<string>("productId") + " UserId:-" + list.Field<string>("userId") + " Ratings:-" + list.Field<string>("ratings") + " Review:-" + list.Field<string>("reviews") + " IsLike:-" + list.Field<string>("isLike"));
+            }
+        }
+
+        /// <summary>
+        /// UC10 - Averages the rating for user identifier using data table.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        public void AverageRatingForUserIDUsingDataTable(DataTable table)
+        {
+            //field for data table always takes string as data type and then casted to integer.
+            //used lambda syntax
+            var recordData = table.AsEnumerable().GroupBy(r => r.Field<string>("userId")).Select(r => new { userid = r.Key, averageRatings = r.Average(x => Convert.ToInt32(x.Field<string>("ratings"))) });
+            foreach (var list in recordData)
+            {
+                Console.WriteLine("user Id:-" + list.userid + " Ratings :" + list.averageRatings);
             }
         }
     }

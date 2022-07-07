@@ -62,10 +62,15 @@
             //productManagement.SkippingRecords(productReviewList);
 
 
-            //UC9
+            ////UC9
             DataTableForProductManagement dataTableForProductManagement = new DataTableForProductManagement();
+            //dataTableForProductManagement.AddDataTable();
+            //dataTableForProductManagement.CallForRetrievingData();
+
+
+            //UC10
             dataTableForProductManagement.AddDataTable();
-            dataTableForProductManagement.CallForRetrievingData();
+            dataTableForProductManagement.CallForAverageRatings();
 
         }
     }

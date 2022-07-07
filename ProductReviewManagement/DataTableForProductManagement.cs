@@ -10,6 +10,7 @@ namespace ProductReviewManagement
     public class DataTableForProductManagement
     {
         DataTable table = new DataTable();
+        ProductManagement productManagement = new ProductManagement();
 
 
         /// <summary>
@@ -43,11 +44,16 @@ namespace ProductReviewManagement
         public void CallForRetrievingData()
         {
             //CALLING  retrieving records method from product management
-            ProductManagement productManagement = new ProductManagement();
             productManagement.RetrievingRecords(table);
         }
 
-
+        /// <summary>
+        /// UC10 - getting records for average ratings.
+        /// </summary>
+        public void CallForAverageRatings()
+        {
+            productManagement.AverageRatingForUserIDUsingDataTable(table);
+        }
 
 
     }
