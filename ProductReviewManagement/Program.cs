@@ -37,10 +37,14 @@
 
             };
 
-            foreach (var list in productReviewList)
-            {
-                Console.WriteLine("ProductId:-" + list.ProductId + " UserId:-" + list.UserId + " Ratings:-" + list.Rating + " Review:-" + list.Review + " IsLike:-" + list.isLike);
-            }
+            //foreach (var list in productReviewList)
+            //{
+            //    Console.WriteLine("ProductId:-" + list.ProductId + " UserId:-" + list.UserId + " Ratings:-" + list.Rating + " Review:-" + list.Review + " IsLike:-" + list.isLike);
+            //}
+
+            //UC2 Top 3 records
+            ProductManagement productManagement = new ProductManagement();
+            productManagement.TopRecords(productReviewList);
         }
     }
 }
