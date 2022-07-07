@@ -121,6 +121,26 @@ namespace ProductReviewManagement
             }
         }
 
+
+        /// <summary>
+        /// Averages the rating for user identifier. UC10
+        /// </summary>
+        /// <param name="productReviewList">The product review list.</param>
+        public void AverageRatingForUserId(List<ProductReview> productReviewList)
+        {
+            var recordData = productReviewList.GroupBy(r => r.UserId).Select(r => new { userId = r.Key, averageRatings = r.Average(x => x.Rating) });
+            var recordedData = from products in productReviewList
+                               group products by products.UserId into p
+                               select new { userId = p.Key, averageRatings = p.Average(x => x.Rating) };
+
+            foreach (var list in recordData)
+            {
+                Console.WriteLine("user Id:-" + list.userId + " Ratings :" + list.averageRatings);
+            }
+
+        }
+
+
         /// <summary>
         /// UC10 - Averages the rating for user identifier using data table.
         /// </summary>
@@ -150,6 +170,25 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductId:-" + list.Field<string>("productId") + " UserId:-" + list.Field<string>("userId") + " Ratings:-" + list.Field<string>("ratings") + " Review:-" + list.Field<string>("reviews") + " IsLike:-" + list.Field<string>("isLike"));
             }
 
+        }
+
+
+        /// <summary>
+        /// UC12 - Selects the records for user identifier.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        public void SelectRecordsForUserId(DataTable table)
+        {
+            var recordData = table.AsEnumerable().Where(r => Convert.ToInt32(r.Field<string>("userid")) == 10).OrderBy(r => Convert.ToInt32(r.Field<string>("ratings")));
+            var recordedData = from products in table.AsEnumerable()
+                               where Convert.ToInt32(products.Field<string>("userid")) == 10
+                               orderby (Convert.ToInt32(products.Field<string>("ratings")))
+                               select products;
+            foreach (var list in recordedData)
+            {
+                //field datatype is string here for every column
+                Console.WriteLine("ProductId:-" + list.Field<string>("productId") + " UserId:-" + list.Field<string>("userId") + " Ratings:-" + list.Field<string>("ratings") + " Review:-" + list.Field<string>("reviews") + " IsLike:-" + list.Field<string>("isLike"));
+            }
         }
     }
 }

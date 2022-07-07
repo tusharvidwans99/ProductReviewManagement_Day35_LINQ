@@ -64,6 +64,13 @@ namespace ProductReviewManagement
             productManagement.ReviewMessageRetrieval(table);
         }
 
+        /// <summary>
+        /// Calls for specific user identifier. UC12
+        /// </summary>
+        public void CallForSpecificUserId()
+        {
+            productManagement.SelectRecordsForUserId(table);
+        }
 
     }
 }
